@@ -1,0 +1,32 @@
+var res = [];
+function product(n1,n2){
+var a = String(n1).split('');
+var b = String(n2).split('');
+var aLength = a.length;
+var bLength = b.length;
+var max = (aLength>bLength)?aLength:bLength;
+ var pos,num1,num2,prod,carry;
+ for(i=aLength-1;i>=0;i--){
+ 	for(j=bLength-1;j>=0;j--){
+   num1 = a[i];
+   num2=b[j];
+   prod = num1*num2;
+   pos = aLength + bLength-i-j-2;
+   addCarry(prod,pos);
+  }
+  }
+  console.log(res.reverse().join(''));
+}
+function addCarry(num,pos){
+ var carry = parseInt(num/10);
+ if(res[pos] === undefined)res[pos] = 0;
+ res[pos] += num;
+ if(res[pos] > 9){
+  carry = parseInt(res[pos]/10);
+  addCarry(carry,pos+1);
+ }
+ res[pos] %= 10;
+}
+
+// Line calling function
+product(23,32);
